@@ -14,3 +14,35 @@ public class KodeBuah
     }
     }
 
+public class PosisiKarakterGame
+{
+    public enum PosisiKarakter {Tengkurap, Jongkok, Landing, Berdiri, Terbang, takeOff }
+    public enum Tombol { TombolW, TombolS, TombolX}
+
+    class transition
+    {
+        public PosisiKarakter prevPosisi;
+        public PosisiKarakter nextPosisi;
+        public Tombol tombol;
+
+        public transition (PosisiKarakter prevPosisi, PosisiKarakter nextPosisi, Tombol tombol)
+        {
+            this.prevPosisi = prevPosisi;
+            this.nextPosisi = nextPosisi;
+            this.tombol = tombol;
+        }
+    }
+    transition[] transitions =
+    {
+        new transition (PosisiKarakter.Terbang, PosisiKarakter.Berdiri, Tombol.TombolS),
+        new transition (PosisiKarakter.Berdiri, PosisiKarakter.Jongkok, Tombol.TombolS),
+        new transition (PosisiKarakter.Jongkok, PosisiKarakter.Tengkurap, Tombol.TombolS),
+        new transition ( PosisiKarakter.Tengkurap, PosisiKarakter.Jongkok, Tombol.TombolW),
+        new transition (PosisiKarakter.Jongkok, PosisiKarakter.Berdiri, Tombol.TombolW),
+        new transition (PosisiKarakter.Berdiri, PosisiKarakter.Terbang, Tombol.TombolW),
+        new transition (PosisiKarakter.Terbang, PosisiKarakter.Jongkok, Tombol.TombolX),
+    };
+
+}
+
+
